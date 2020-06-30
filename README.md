@@ -2,7 +2,7 @@
 
 Simple Flutter Login App with Bloc State Management.
 
-<video controls="controls" name="Login App Preview" src="assets/login_preview.mov"></video>
+<video controls="controls" width="100%" height="auto" name="Login App Preview" src="assets/login_preview.mov"></video>
 
 ## Getting Started
 
