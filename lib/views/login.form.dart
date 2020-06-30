@@ -11,14 +11,18 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   _onLoginButtonPressed() {
-    BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
-      username: _usernameController.text,
-      password: _passwordController.text,
-    ));
+    if (_formLoginKey.currentState.validate()) {
+      BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
+        username: _usernameController.text,
+        password: _passwordController.text,
+      ));
+    }
   }
 
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  final _formLoginKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,16 +42,37 @@ class _LoginFormState extends State<LoginForm> {
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: Form(
+              key: _formLoginKey,
               child: Column(
                 children: [
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Username'),
                     controller: _usernameController,
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return "Field username is required";
+                      }
+
+                      if (value != "rismandev") {
+                        return "Wrong username";
+                      }
+                      return null;
+                    },
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Password'),
                     controller: _passwordController,
                     obscureText: true,
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return "Field password is required";
+                      }
+
+                      if (value != "rismandev") {
+                        return "Wrong password";
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(height: 10.0),
                   RaisedButton(
