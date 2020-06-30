@@ -2,7 +2,7 @@
 
 Simple Flutter Login App with Bloc State Management.
 
-<img src="assets/login_preview.mov" alt="Enter Table Number Empty"/>
+<video controls="controls" name="Login App Preview" src="assets/login_preview.mov"></video>
 
 ## Getting Started
 
